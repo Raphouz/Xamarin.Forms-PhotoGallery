@@ -63,7 +63,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DependencyServices\MediaServiceImplementation.cs" />
+    <Compile Include="DependencyServices\PhotoGalleryService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />

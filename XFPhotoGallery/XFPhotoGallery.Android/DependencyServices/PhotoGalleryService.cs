@@ -17,29 +17,26 @@ using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 
-using XFPhotoGallery.DependencyService;
-using XFPhotoGallery.Droid.DependencyServiceImplementation;
-using XFPhotoGallery.Model;
-
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-using static XFPhotoGallery.Model.MediaAsset;
+using XFPhotoGallery.Droid.DependencyServiceImplementation;
+using XFPhotoGallery.PhotoGalleryService;
 
-[assembly: Dependency(typeof(MediaServiceImplementation))]
+[assembly: Dependency(typeof(PhotoGalleryService))]
 namespace XFPhotoGallery.Droid.DependencyServiceImplementation
 {
-	public class MediaServiceImplementation : IMediaService
+	public class PhotoGalleryService : IPhotoGalleryService
 	{
 		public event EventHandler<MediaEventArgs> MediaAssetLoaded;
 
 		public bool IsLoading { get; private set; }
 
-		public int ThumbnailQuality { get; set; } = 100;
+		public int ThumbnailQuality { get; set; }
 
 		CancellationToken cancelToken;
 
-		public MediaServiceImplementation()
+		public PhotoGalleryService()
 		{ }
 
 		public async Task<IList<MediaAsset>> RetrieveMediaAssetsAsync(CancellationToken? token = null)
@@ -130,7 +127,6 @@ namespace XFPhotoGallery.Droid.DependencyServiceImplementation
 										Name = name,
 										Source = path,
 										Thumbnail = thumbnailPath,
-										Type = MediaAssetType.Image,
 									};
 
 									using (var handler = new Handler(Looper.MainLooper))

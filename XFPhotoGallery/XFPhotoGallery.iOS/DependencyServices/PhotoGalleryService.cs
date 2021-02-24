@@ -18,22 +18,19 @@ using CoreGraphics;
 
 using Foundation;
 
-using XFPhotoGallery.DependencyService;
-using XFPhotoGallery.iOS.DependencyServiceImplementation;
-using XFPhotoGallery.Model;
-
 using Photos;
 
 using UIKit;
 
 using Xamarin.Forms;
 
-using static XFPhotoGallery.Model.MediaAsset;
+using XFPhotoGallery.iOS.DependencyServiceImplementation;
+using XFPhotoGallery.PhotoGalleryService;
 
-[assembly: Dependency(typeof(MediaServiceImplementation))]
+[assembly: Dependency(typeof(PhotoGalleryService))]
 namespace XFPhotoGallery.iOS.DependencyServiceImplementation
 {
-	public class MediaServiceImplementation : IMediaService
+	public class PhotoGalleryService : IPhotoGalleryService
 	{
 		public event EventHandler<MediaEventArgs> MediaAssetLoaded;
 
@@ -43,7 +40,7 @@ namespace XFPhotoGallery.iOS.DependencyServiceImplementation
 
 		CancellationToken cancelToken;
 
-		public MediaServiceImplementation()
+		public PhotoGalleryService()
 		{ }
 
 		public async Task<PHAuthorizationStatus> RequestPermissionAsync()
@@ -140,7 +137,6 @@ namespace XFPhotoGallery.iOS.DependencyServiceImplementation
 						{
 							Id = phAsset.LocalIdentifier,
 							Name = name,
-							Type = MediaAssetType.Image,
 						};
 
 						// Requests image on thumbnail size.

@@ -4,21 +4,24 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-using XFPhotoGallery.DependencyService;
-using XFPhotoGallery.Model;
+using Xamarin.Forms;
+
+using XFPhotoGallery.PhotoGalleryService;
 
 namespace XFPhotoGallery.PhotoGallery
 {
 	public class PhotoGalleryCollection : ObservableCollection<MediaAsset>
 	{
-		readonly IMediaService mediaService;
+		readonly IPhotoGalleryService mediaService;
 
-		int thumbnailQuality = 80;
+		int thumbnailQuality = 100;
 
 		public PhotoGalleryCollection()
 		{
-			mediaService = Xamarin.Forms.DependencyService.Get<IMediaService>();
+			mediaService = DependencyService.Get<IPhotoGalleryService>();
 			mediaService.MediaAssetLoaded += MediaService_MediaAssetLoaded;
+
+			mediaService.ThumbnailQuality = ThumbnailQuality;
 
 			// From Stephen Cleary blog post on async construction: https://blog.stephencleary.com/2013/01/async-oop-2-constructors.html
 			Initialization = mediaService.RetrieveMediaAssetsAsync();
