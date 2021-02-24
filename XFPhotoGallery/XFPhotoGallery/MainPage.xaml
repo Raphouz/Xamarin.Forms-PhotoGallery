@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:custom="clr-namespace:XFPhotoGallery.CustomElements"
+			 xmlns:gallery="clr-namespace:XFPhotoGallery.PhotoGallery"
+			 x:Class="XFPhotoGallery.MainPage"
+			 x:Name="this">
+
+	<StackLayout>
+		<custom:SquareFrame Padding="0"
+							BackgroundColor="Transparent"
+							HasShadow="False"
+							HorizontalOptions="FillAndExpand">
+
+			<Image x:Name="photo"
+				   Source="{Binding SelectedItem.Media, Source={x:Reference gallery}}"
+				   Aspect="AspectFill"/>
+		</custom:SquareFrame>
+
+		<CollectionView x:Name="gallery"
+						SelectionMode="Single"
+						ItemSizingStrategy="MeasureAllItems">
+
+			<CollectionView.ItemsSource>
+				<gallery:PhotoGalleryCollection ThumbnailQuality="70"/>
+			</CollectionView.ItemsSource>
+			
+			<CollectionView.ItemsLayout>
+				<GridItemsLayout Orientation="Vertical"
+								 Span="3"/>
+			</CollectionView.ItemsLayout>
+
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<custom:SquareFrame Padding="0"
+											 BorderColor="White">
+						<Image Source="{Binding Thumbnail}"
+							   Aspect="AspectFill"/>
+					</custom:SquareFrame>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+			
+		</CollectionView>
+	</StackLayout>
+
+</ContentPage>
