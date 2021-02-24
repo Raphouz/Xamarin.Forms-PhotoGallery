@@ -128,7 +128,7 @@ namespace XFPhotoGallery.Droid.DependencyServiceImplementation
 									{
 										Id = id.ToString(),
 										Name = name,
-										Media = path,
+										Source = path,
 										Thumbnail = thumbnailPath,
 										Type = MediaAssetType.Image,
 									};

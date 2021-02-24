@@ -13,7 +13,7 @@
 							HorizontalOptions="FillAndExpand">
 
 			<Image x:Name="photo"
-				   Source="{Binding SelectedItem.Media, Source={x:Reference gallery}}"
+				   Source="{Binding SelectedItem.Source, Source={x:Reference gallery}}"
 				   Aspect="AspectFill"/>
 		</custom:SquareFrame>
 
@@ -33,7 +33,7 @@
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
 					<custom:SquareFrame Padding="0"
-											 BorderColor="White">
+										BorderColor="White">
 						<Image Source="{Binding Thumbnail}"
 							   Aspect="AspectFill"/>
 					</custom:SquareFrame>

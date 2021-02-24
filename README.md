@@ -40,3 +40,5 @@ The example below shows how to display the loaded images in a `CollectionView`.
 			
 </CollectionView>
 ```
+
+![Screenshot](Screenshot.png)

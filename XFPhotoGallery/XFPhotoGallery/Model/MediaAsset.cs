@@ -2,7 +2,7 @@
 
 namespace XFPhotoGallery.Model
 {
-	public class MediaAsset : Element
+	public class MediaAsset
     {
         //Image,Video
         public enum MediaAssetType
@@ -13,7 +13,7 @@ namespace XFPhotoGallery.Model
         public MediaAssetType Type { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Media { get; set; }
+        public string Source { get; set; }
         public string Thumbnail { get; set; }
 	}
 }

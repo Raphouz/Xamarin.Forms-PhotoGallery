@@ -190,7 +190,7 @@ namespace XFPhotoGallery.iOS.DependencyServiceImplementation
 
 										if (error == null)
 										{
-											asset.Media = fileName;
+											asset.Source = fileName;
 										}
 									}
 								}
